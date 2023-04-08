@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Conversor de medidas</title>
+    <style>
+      body {
+        font-family: Calibri Light, sans-serif;
+        background-color: #f5f5f5;
+        background-color:#e0e0f0;
+      }
+
+      footer{
+
+        margin-top: 100px;
+        margin-bottom:100px;
+        text-align: center;
+        font-weight: bold;
+     
+      }
+      form {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        width: 40%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        font-family: Calibri Light, sans-serif;
+        background-color: #0A3871;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0A3871;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; color: #0A3871;">CONVERSOR DE MEDIDAS</h1>
+    <nav style="text-align: center;">
+      <a href="index.html">METROS</a>|
+      <a href="pulgadas.html">PULGADAS</a>|
+      <a href="pixeles.html">PIXELES DISTANCIA</a>
+    </nav>
+    <br>
+    <P style="text-align: center; color: #0A3871;">PULGADAS Y CENTIMETROS </P>
+    <form id="conversorForm">
+      <div class="row">
+        <label width="40%" for="pulgadas">Pulgadas a Centimetros:</label>
+        <input type="text" id="pulgadas" name="pulgadas" placeholder="Pulgadas">
+      </div>
+      <div class="row">
+        <label width="40%" for="centimetros">Centimetros a Pulgadas:</label>
+        <input type="text" id="centimetros" name="centimetros" placeholder="Centimetros">
+      </div>
+        <input type="submit" value="Convertir">
+      
+    </form>
+    <div style="text-align: center;" id="resultado"></div>
+    <script src="conversor.js"></script>
+  </body>
+  <footer>
+
+    <div>
+      <a href="https://github.com/andrestolosa"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/jerson-andres-tolosa-cruz-b22270222/"><i class="fa-brands fa-linkedin"></i></a>
+      
+  </div>
+  <p>By Andres Tolosa Cruz - 2023<br>
+    © Copyright - Derechos Reservados</p>
+   
+  </footer>
+</html> 
+
+
+<script>
+    const conversorForm = document.getElementById('conversorForm');
+    const pulgadasInput = document.getElementById('pulgadas');
+    const centimetrosInput = document.getElementById('centimetros');
+    const resultadoDiv = document.getElementById('resultado');
+
+    conversorForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+    const pulgadas = (pulgadasInput.value); // Convierte el valor del campo de entrada a un número de punto flotante
+    const centimetros = (centimetrosInput.value);
+    if (isNaN(pulgadas  || centimetros)) {
+        resultadoDiv.innerHTML = '<p class="error">Ingresa una medida válida.</p>';
+    } else {
+
+      if(pulgadas==""){
+       
+        const pulgadas = centimetros * 0.393701;
+        resultadoDiv.innerHTML = `<h4> El resultado de la conversion es:  ${pulgadas} pulgadas.</h4>`;
+      }
+
+      if (centimetros==""){
+       
+        const centimetros = pulgadas * 2.54;
+        resultadoDiv.innerHTML = `<h4> El resultado de la conversion es:  ${centimetros} cm.</h4>`;
+      } 
+                            
+    }
+    });
+
+</script>
